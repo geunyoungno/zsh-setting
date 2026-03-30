@@ -1,6 +1,0 @@
-export ZSHR_THEME='powerline'
-if [ -x "$(command -v powerline)" ] &&
-       ! [ "$(zinit loaded powerline-binding | grep black7375 |
-          sed -E "s/[[:cntrl:]]\[[0-9]{1,3}m//g")" = "black7375/powerline-binding *" ] ; then
-    zinit light black7375/powerline-binding
-fi

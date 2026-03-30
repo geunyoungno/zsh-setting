@@ -32,12 +32,7 @@ autoload -Uz cdr
 autoload -Uz chpwd_recent_dirs
 
 ## -- Theme Set ----------------------------------------------------------------
-load-file "$ZSHR/legacy.ztheme" ~/.ztheme
-
-if [ -z "$ZSHR_THEME" ] ; then
-  export ZSHR_THEME='auto'
-fi
-_zsh-theme $ZSHR_THEME
+[[ ! -f ${ZSHR}/p10k.zsh ]] || source ${ZSHR}/p10k.zsh
 
 ## -- Plugin Set ---------------------------------------------------------------
 if type tmux &>/dev/null; then
