@@ -17,10 +17,6 @@ case $- in
   *) return 0;;
 esac
 
-# Instant Prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 ## == Zplugin Set ==============================================================
 ZINIT_DIR=~/.zplugin/bin
@@ -31,8 +27,8 @@ autoload -Uz _zinit
 autoload -Uz cdr
 autoload -Uz chpwd_recent_dirs
 
-## -- Theme Set ----------------------------------------------------------------
-[[ ! -f ${ZSHR}/p10k.zsh ]] || source ${ZSHR}/p10k.zsh
+## -- Prompt (Starship) --------------------------------------------------------
+eval "$(starship init zsh)"
 
 ## -- Plugin Set ---------------------------------------------------------------
 if type tmux &>/dev/null; then
@@ -82,9 +78,6 @@ zinit ice from"gh" pick"/dev/null" nocompletions blockf lucid \
 zinit light robbyrussell/oh-my-zsh
 
 ## -- Core Plugins -----------------------------------------
-zinit ice depth"1"
-zinit light romkatv/powerlevel10k
-
 zinit ice wait"0a" atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" atload"_zsh_highlight" lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice wait"0a" compile'{src/*.zsh,src/strategies/*}' atload"_zsh_autosuggest_start" lucid
