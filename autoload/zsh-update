@@ -1,47 +1,12 @@
 echo "--------------------"
-echo "  BlaCk-Zsh Update"
+echo "  Zsh 설정 업데이트"
 echo "--------------------\n"
 
-echo "\n--------------------"
-echo "Setting files update"
-cd $ZSHR && git pull
-zsh-compile
-
-echo "\n--------------------"
-echo "Plugins update"
-unfunction _zinit-check-remote
-autoload -Uz _zinit-check-remote
-
-_zinit-check-remote
+echo "플러그인 업데이트..."
 zinit self-update
 zinit update --parallel
 
-# zinit Snippet -> zinit light
-_OMZ_LIB=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--lib/
-if [[ -e $_OMZ_LIB ]]; then
-    rm -rfv $_OMZ_LIB/compfix.zsh $_OMZ_LIB/termsupport.zsh
-    if [[ "$( find $_OMZ_LIB -mindepth 1 -maxdepth 1 | wc -l )" -eq 0  ]]; then
-        rm -rfv $_OMZ_LIB
-    fi
-fi
-_OMZ_PLUGIN=~/.zplugin/snippets/https--github.com--robbyrussell--oh-my-zsh--tree--master--plugins
-_OMZ_PLUGIN_LIST=(
-    $_OMZ_PLUGIN--autojump
-    $_OMZ_PLUGIN--command-not-found
-    $_OMZ_PLUGIN--fzf
-    $_OMZ_PLUGIN--git
-    $_OMZ_PLUGIN--pip
-    $_OMZ_PLUGIN--sudo
-    $_OMZ_PLUGIN--thefuck
-    $_OMZ_PLUGIN--urltools
-    $_OMZ_PLUGIN--tmux
-    $_OMZ_PLUGIN--tmuxinator
-)
-if [[ -e $_OMZ_PLUGIN--autojump ]]; then
-    rm -rfv $_OMZ_PLUGIN_LIST
-fi
+echo "\nzsh 파일 컴파일..."
+zsh-compile
 
-# git clone -> zplugin
-if [[ -e $ZSHR/hhighlighter ]]; then
-    rm -rfv $ZSHR/hhighlighter
-fi
+echo "\n업데이트 완료!"
