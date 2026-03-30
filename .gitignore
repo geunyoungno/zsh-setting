@@ -1,0 +1,5 @@
+*.zwc
+cache/
+local.zsh
+.zsh_autoupdate_lock
+.claude/
