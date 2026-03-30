@@ -63,7 +63,7 @@ _zpcompinit-custom() {
     autoload -Uz bashcompinit && bashcompinit
     zmodload -i zsh/complist
 
-    local zcd=${ZPLGM[ZCOMPDUMP_PATH]:-${ZDOTDIR:-$HOME}/.zcompdump}
+    local zcd=${ZINIT[ZCOMPDUMP_PATH]:-${ZDOTDIR:-$HOME}/.zcompdump}
     local zcdc="${zcd}.zwc"
     if [[ -f ${zcd}(#qN.m+1) ]]; then
         compinit -i -d "${zcd}"

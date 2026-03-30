@@ -148,7 +148,6 @@ _tmux_pane_words()
     }
     # Capture current pane first.
     w=( ${(u)=$(_tmux_capture_pane)} )
-    echo $w > /tmp/w1
     local i
     for i in $(tmux list-panes -F '#D'); do
         # Skip current pane (handled before).

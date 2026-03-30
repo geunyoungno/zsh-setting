@@ -186,7 +186,7 @@ zinit light romkatv/powerlevel10k
 
 zinit ice wait"0a" atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" atload"_zsh_highlight" lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
-zinit ice wait"0a" compile'{src/*.zsh,src/strategies/*}' atinit"ZSH_AUTOSUGGEST_USE_ASYNC=1" atload"_zsh_autosuggest_start" lucid
+zinit ice wait"0a" compile'{src/*.zsh,src/strategies/*}' atload"_zsh_autosuggest_start" lucid
 zinit light zsh-users/zsh-autosuggestions
 zinit ice wait"0b" lucid
 zinit light hlissner/zsh-autopair
@@ -271,11 +271,9 @@ setopt complete_aliases
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 setopt HIST_SAVE_NO_DUPS
-setopt HIST_IGNORE_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt SHARE_HISTORY
-setopt INC_APPEND_HISTORY
 
 # eliminates duplicates in *paths
 typeset -gU cdpath fpath path
@@ -289,19 +287,19 @@ typeset -gU cdpath fpath path
 alias tar-compress-gz="tar -zcvf"
 alias tar-extract-gz="tar -zxvf"
 alias map="telnet mapscii.me"
-alias prettyping="$ZSHR/prettyping"
+(( ${+commands[prettyping]} )) && alias prettyping="prettyping"
 alias rsync-ssh="rsync -avzhe ssh --progress"
 alias ~="cd ~"
 alias /="cd /"
 alias ..="cd .."
 alias ...="cd ../../../"
 alias ....="cd ../../../../"
-alias .....="cd ../../../../"
+alias .....="cd ../../../../../"
 alias rm="rm -i"                          # confirm before overwriting something
 alias cp="cp -i"
 alias mv="mv -i"
 alias df="df -h"                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
+(( ${+commands[free]} )) && alias free='free -m'
 alias more=less
 alias bc="bc -l"
 alias sha1="openssl sha1"
