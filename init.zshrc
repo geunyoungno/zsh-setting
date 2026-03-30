@@ -146,6 +146,15 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 setopt SHARE_HISTORY
 
+# Up/Down arrow: 입력한 텍스트로 시작하는 히스토리 검색
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '^[[A' history-beginning-search-backward-end
+bindkey '^[[B' history-beginning-search-forward-end
+bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
+bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
+
 # eliminates duplicates in *paths
 typeset -gU cdpath fpath path
 
