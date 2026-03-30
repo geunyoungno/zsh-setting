@@ -135,12 +135,15 @@ setopt interactive_comments
 setopt correct
 setopt noclobber
 setopt complete_aliases
-[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
-HISTSIZE=1000000
+HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
+HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
 setopt SHARE_HISTORY
 
 # eliminates duplicates in *paths
@@ -179,5 +182,5 @@ then
   chpwd
 fi
 
-## -- Autoupdate Check ---------------------------------------------------------
-_zsh-auto-update
+## -- Local Settings -----------------------------------------------------------
+[[ -f ${ZSHR}/local.zsh ]] && source ${ZSHR}/local.zsh
