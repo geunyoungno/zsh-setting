@@ -97,7 +97,9 @@ zinit ice wait"0c" lucid
 zinit light Aloxaf/fzf-tab
 
 ## -- Zoxide (brew) ----------------------------------------
-zinit ice wait"0c" atload'eval "$(zoxide init zsh)"' lucid
+# --cmd cd : cd 자체를 zoxide 로 바꾼다. 그 이름의 폴더가 지금 위치에 없으면 가 본 폴더 기록에서 찾아 간다.
+#            후보를 목록에서 고르려면 cdi. 원래 cd 가 필요하면 builtin cd.
+zinit ice wait"0c" atload'eval "$(zoxide init zsh --cmd cd)"' lucid
 zinit light zdharma-continuum/null
 
 ## -- Tools ------------------------------------------------
