@@ -2,11 +2,11 @@
 
 # eza (modern ls)
 if (( ${+commands[eza]} )); then
-  alias ls='eza --icons'
-  alias ll='eza -alh --icons --git'
-  alias la='eza -a --icons'
-  alias lt='eza --tree --icons'
-  alias l='eza --icons'
+  alias ls='eza --icons=auto'
+  alias ll='eza -alh --icons=auto --git'
+  alias la='eza -a --icons=auto'
+  alias lt='eza --tree --icons=auto'
+  alias l='eza --icons=auto'
 fi
 
 # bat (modern cat)
